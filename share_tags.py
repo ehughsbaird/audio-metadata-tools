@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """
-Share metadata tags between mp3 files in a directory
+Share metadata tags between mp3/ogg/flac files in a directory
 
 This is designed to fix the metadata for songs that lack metadata, but are in a
 directory with other songs in the album that have it.
 
-This will recursively execute on all directories under the directory it is
-called on
+This will recursively execute on all directories under the directory it is called on
 """
 import argparse
 import mutagen
@@ -93,16 +92,19 @@ def process_dir(working_dir):
 def print_dir(directory):
     for root,dirs,files in os.walk(directory):
         for file in files:
-            if not file.endswith('.mp3'):
+            if (not file.endswith('.mp3') and
+                not file.endswith('.ogg') and
+                not file.endswith('.flac')):
                 continue
             data = mutagen.File(os.path.join(root, file), easy=True)
             print(data)
 
 
-if(args.dry_run):
-    print_dir(args.directory)
-else:
-    process_dir(args.directory)
-    for root,dirs,files in os.walk(args.directory):
-        for working_dir in dirs:
-            process_dir(os.path.join(root, working_dir))
+if __name__ == "__main__":
+    if(args.dry_run):
+        print_dir(args.directory)
+    else:
+        process_dir(args.directory)
+        for root,dirs,files in os.walk(args.directory):
+            for working_dir in dirs:
+                process_dir(os.path.join(root, working_dir))
