@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Share metadata tags between mp3 files in a directory
 
@@ -31,8 +32,6 @@ args = parser.parse_args()
 shared_keys = ['album', 'artist', 'albumartist', 'genre', 'date']
 
 
-def extract_tags(tags, metadata):
-
 # Share tags among the files in the given directory
 def process_dir(working_dir):
     # mp3 files to process, list of (full file path, file name)
@@ -52,7 +51,7 @@ def process_dir(working_dir):
     # Get the tags from the files
     for file, local in targets:
         # Get the metadata with mutagen
-        metadata = mutagen.File(file, easy=True)
+        data = mutagen.File(file, easy=True)
         if 'title' not in data:
             # 'XX Title.mp3' if 'numbered', otherwise cut off the .mp3
             name_guess = local[3:-4] if args.name_format == 'numbered' else local[:-4]
