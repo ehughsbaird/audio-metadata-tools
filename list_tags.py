@@ -24,7 +24,12 @@ args = parser.parse_args()
 # print the tags on a music file
 def print_tags_on(path):
         data = mutagen.File(path, easy=True)
-        print(f"#{data['tracknumber']} {data['title']} by {data['artist']} on {data['album']}")
+        track = data['tracknumber'] if 'tracknumber' in data else "unknown number"
+        title = data['title'] if 'title' in data else "unknown title"
+        artist = data['artist'] if 'artist' in data else "unknown artist"
+        album = data['album'] if 'album' in data else "unknown album"
+
+        print(f"#{track} {title} by {artist} on {album}")
         if args.all_tags:
             # list of lines that will have tags, so that it's not just one big mass
             other_tags = ["\t"]
