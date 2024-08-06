@@ -6,6 +6,8 @@ filesystem.
 
 Invalid characters are normal ascii characters that may be invalid, in addition
 to any non-printable characters.
+
+usage: fix_filenames [-r] directory_or_file
 """
 import argparse
 import os

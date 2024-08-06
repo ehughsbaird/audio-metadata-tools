@@ -6,6 +6,9 @@ This is designed to fix the metadata for songs that lack metadata, but are in a
 directory with other songs in the album that have it.
 
 This will recursively execute on all directories under the directory it is called on
+
+usage: share_tags directory
+You may wish to run with -d first to see what changes will be made
 """
 import argparse
 import mutagen

@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
 list metadata tags for mp3/ogg/flac music files
+
+usage: list_tags [-r] directory_or_file
 """
 import argparse
 import mutagen
