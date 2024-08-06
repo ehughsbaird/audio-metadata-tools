@@ -9,3 +9,7 @@ tools themselves.
 
 The tool to "fix" filenames is not purely relevant to audio applications, that's just the reason
 that I created it.
+
+The tool to fix m3u playlsits has only been tested on music playlists exported from a music app on
+my phone with an identical directory structure on a computer. Beware of dragons if your usage does
+not match this.
